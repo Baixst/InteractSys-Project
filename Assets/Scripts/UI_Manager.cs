@@ -4,37 +4,49 @@ using UnityEngine;
 
 public class UI_Manager : MonoBehaviour
 {
-    public GameObject bottomBar;
-    public GameObject inputField;
-    public GameObject submitButton;
-    private Vector3 bottomBarStart, inputFieldStart, submitButtonStart;
+    public GameObject newTaskPanel;
+    public GameObject menuButton;
+    public GameObject searchButton;
+    public GameObject activeScrollView;
+    public GameObject doneScrollView;
+    public SpriteRenderer activeListBar;
+    public SpriteRenderer doneListBar;
+    public Color selectedColor;
+    public Color deselectedColor;
 
     void Start()
     {
-        bottomBarStart = bottomBar.transform.position;
-        inputFieldStart = inputField.transform.position;
-        submitButtonStart = submitButton.transform.position;
+        newTaskPanel.SetActive(false);
+        doneScrollView.SetActive(false);
     }
 
-    public void OnInputFieldSelected()
+    public void OpenNewTaskPanel()
     {
-        var tmp = bottomBar.transform.position;
-        tmp.y += 5.8f;
-        bottomBar.transform.position = tmp;
-
-        tmp = inputField.transform.position;
-        tmp.y += 5.8f;
-        inputField.transform.position = tmp;
-
-        tmp = submitButton.transform.position;
-        tmp.y += 5.8f;
-        submitButton.transform.position = tmp;
+        newTaskPanel.SetActive(true);
+        searchButton.SetActive(false);
+        menuButton.SetActive(false);
     }
 
-    public void OnInputFieldDeselected()
+    public void CloseNewTaskPanel()
     {
-        bottomBar.transform.position = bottomBarStart;
-        inputField.transform.position = inputFieldStart;
-        submitButton.transform.position = submitButtonStart;
+        newTaskPanel.SetActive(false);
+        searchButton.SetActive(true);
+        menuButton.SetActive(true);
+    }
+
+    public void GoToActiveList()
+    {
+        activeListBar.color = selectedColor;
+        doneListBar.color = deselectedColor;
+        activeScrollView.SetActive(true);
+        doneScrollView.SetActive(false);
+    }
+
+    public void GoToDoneList()
+    {
+        activeListBar.color = deselectedColor;
+        doneListBar.color = selectedColor;
+        activeScrollView.SetActive(false);
+        doneScrollView.SetActive(true);
     }
 }
