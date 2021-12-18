@@ -1,0 +1,33 @@
+{
+    "name": "TouchControls",
+    "maps": [
+        {
+            "name": "Default Controls",
+            "id": "451dad0d-6e53-4cad-bd99-8ca35ecf90fa",
+            "actions": [
+                {
+                    "name": "DragObject",
+                    "type": "Button",
+                    "id": "dbebdb95-796e-4c26-9fe2-943ecb9ee40e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "45fa732d-4002-49e1-9bac-7f8ead0680ef",
+                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DragObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
