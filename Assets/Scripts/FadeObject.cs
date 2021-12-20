@@ -28,11 +28,11 @@ public class FadeObject : MonoBehaviour
             gameObject.GetComponentInChildren<Text>().color = textColor;
 
             // fade the checkbox marker
-            Color checkmarkColor = gameObject.GetComponent<Toggle>().graphic.color;
+            Color checkmarkColor = gameObject.GetComponentInChildren<Toggle>().graphic.color;
             fadeAmount = checkmarkColor.a - (fadeSpeed * Time.deltaTime);
 
             checkmarkColor = new Color(checkmarkColor.r, checkmarkColor.g, checkmarkColor.b, fadeAmount);
-            gameObject.GetComponent<Toggle>().graphic.color = checkmarkColor;
+            gameObject.GetComponentInChildren<Toggle>().graphic.color = checkmarkColor;
 
             if (imageColor.a <= 0)
             {
@@ -53,9 +53,9 @@ public class FadeObject : MonoBehaviour
             gameObject.GetComponentInChildren<Text>().color = textColor;
 
             // fade in the checkbox marker
-            Color checkmarkColor = gameObject.GetComponent<Toggle>().graphic.color;
+            Color checkmarkColor = gameObject.GetComponentInChildren<Toggle>().graphic.color;
             checkmarkColor = new Color(checkmarkColor.r, checkmarkColor.g, checkmarkColor.b, 1f);
-            gameObject.GetComponent<Toggle>().graphic.color = checkmarkColor;
+            gameObject.GetComponentInChildren<Toggle>().graphic.color = checkmarkColor;
 
             fadeIn = false;
         }

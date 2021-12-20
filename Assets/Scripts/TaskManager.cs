@@ -27,7 +27,7 @@ public class TaskManager : MonoBehaviour
             newTask.transform.SetParent(activeScrollViewContent, false);
             newTask.GetComponentInChildren<Text>().text = taskName;
             tasks.Add(newTask);
-            toggleStati.Add(newTask.GetComponent<Toggle>().isOn);
+            toggleStati.Add(newTask.GetComponentInChildren<Toggle>().isOn);
         }
     }
 
@@ -37,7 +37,7 @@ public class TaskManager : MonoBehaviour
         listElement.GetComponent<FadeObject>().fadeOut = true;
         yield return new WaitForSeconds(0.35f);
 
-        if (listElement.GetComponent<Toggle>().isOn)
+        if (listElement.GetComponentInChildren<Toggle>().isOn)
         {
             listElement.transform.SetParent(doneScrollViewContent, false);
             listElement.GetComponent<FadeObject>().fadeIn = true;
@@ -55,7 +55,7 @@ public class TaskManager : MonoBehaviour
 
         for (int i = 0; i < tasks.Count; i++)
         {
-            if (tasks[i].GetComponent<Toggle>().isOn != toggleStati[i])
+            if (tasks[i].GetComponentInChildren<Toggle>().isOn != toggleStati[i])
             {
                 StartCoroutine(ToggleTask(tasks[i]));
                 toggleStati[i] = !toggleStati[i];
