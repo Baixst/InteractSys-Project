@@ -48,15 +48,15 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public void OnEndDrag(PointerEventData eventData)
     {
         // Delete Object or move it back
-        /* if (draggingObjectRectTransform.position.x < 50f)
+        Debug.Log("x position on drag end: " + draggingObjectRectTransform.position.x);
+        if (draggingObjectRectTransform.position.x < -2.18f)
         {
-            gameObject.GetComponent<FadeObject>().fadeOut = true;
+            StartCoroutine(MoveOverSecondsAndDelete(gameObject, new Vector3 (-5.35f, startY, startZ), 0.2f));
         }
         else
-        */
-        //{
+        {
             StartCoroutine(MoveOverSeconds(gameObject, new Vector3 (startX, startY, startZ), 0.2f));
-        //}
+        }
     }
 
     public IEnumerator MoveOverSeconds (GameObject objectToMove, Vector3 endPosition, float seconds)
@@ -70,5 +70,20 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             yield return new WaitForEndOfFrame();
         }
         objectToMove.transform.position = endPosition;
+    }
+
+    public IEnumerator MoveOverSecondsAndDelete (GameObject objectToMove, Vector3 endPosition, float seconds)
+    {
+        float elapsedTime = 0;
+        Vector3 startingPos = objectToMove.transform.position;
+        while (elapsedTime < seconds)
+        {
+            objectToMove.transform.position = Vector3.Lerp(startingPos, endPosition, (elapsedTime / seconds));
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        objectToMove.transform.position = endPosition;
+        yield return new WaitForSeconds(0.3f);
+        Destroy(gameObject);
     }
 }

@@ -52,14 +52,21 @@ public class TaskManager : MonoBehaviour
     void Update()
     {
         if (tasks == null)  return;
+        int indexToRemove = 1000;
 
         for (int i = 0; i < tasks.Count; i++)
         {
+            if (tasks[i] == null)
+            {
+                indexToRemove = i;
+                continue;
+            }
             if (tasks[i].GetComponentInChildren<Toggle>().isOn != toggleStati[i])
             {
                 StartCoroutine(ToggleTask(tasks[i]));
                 toggleStati[i] = !toggleStati[i];
             }
         }
+        if (indexToRemove < 1000)       tasks.RemoveAt(indexToRemove);
     }
 }
