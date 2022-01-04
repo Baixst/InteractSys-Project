@@ -2973,7 +2973,7 @@ GameObject:
   - component: {fileID: 1771804058}
   - component: {fileID: 1771804057}
   m_Layer: 0
-  m_Name: Blue Botton Bar
+  m_Name: Blue Bottom Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
