@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 973981980508700415}
   - component: {fileID: 973981980508700406}
   m_Layer: 0
-  m_Name: TaskPrefab
+  m_Name: TaskPrefab_A
   m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

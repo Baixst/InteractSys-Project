@@ -10,7 +10,8 @@ public class InputManager : MonoBehaviour
     public event StartTouchEvent OnStartTouch;
     public delegate void EndTouchEvent(Vector2 position);
     public event EndTouchEvent OnEndTouch;
-    
+    public Vector2 touchStartedPosition;
+    public Vector2 touchEndedPosition;    
 
     private void Awake()
     {
@@ -35,7 +36,8 @@ public class InputManager : MonoBehaviour
 
     private void StartTouch(InputAction.CallbackContext context)
     {
-        Debug.Log("Touch started " + touchControls.DefaultControls.TouchPosition.ReadValue<Vector2>());
+        touchStartedPosition = touchControls.DefaultControls.TouchPosition.ReadValue<Vector2>();
+        Debug.Log("Touch started " + touchStartedPosition);
         if (OnStartTouch != null)
         {
             OnStartTouch(touchControls.DefaultControls.TouchPosition.ReadValue<Vector2>());
@@ -44,7 +46,8 @@ public class InputManager : MonoBehaviour
 
     private void EndTouch(InputAction.CallbackContext context)
     {
-        Debug.Log("Touch ended " + touchControls.DefaultControls.TouchPosition.ReadValue<Vector2>());
+        touchEndedPosition = touchControls.DefaultControls.TouchPosition.ReadValue<Vector2>();
+        Debug.Log("Touch ended " + touchEndedPosition);
         if (OnEndTouch != null)
         {
             OnEndTouch(touchControls.DefaultControls.TouchPosition.ReadValue<Vector2>());
