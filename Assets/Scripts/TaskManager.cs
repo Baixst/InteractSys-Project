@@ -31,26 +31,35 @@ public class TaskManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ToggleTask(GameObject listElement)
+    private IEnumerator ToggleTask(GameObject listElement, bool destroy)
     {
         yield return new WaitForSeconds(0.2f);
         listElement.GetComponent<FadeObject>().fadeOut = true;
         yield return new WaitForSeconds(0.35f);
 
+        
+
         if (listElement.GetComponentInChildren<Toggle>().isOn)
         {
             listElement.transform.SetParent(doneScrollViewContent, false);
             listElement.GetComponent<FadeObject>().fadeIn = true;
+           // listElement.GetComponentInChildren<Toggle>().isOn = false;
         }
         else
         {
             listElement.transform.SetParent(activeScrollViewContent, false);
             listElement.GetComponent<FadeObject>().fadeIn = true;
         }
+
+        if (destroy)
+        {
+            Destroy(listElement);
+        }
     }
 
     void Update()
     {
+        /*
         if (tasks == null)  return;
         int indexToRemove = 1000;
 
@@ -63,10 +72,57 @@ public class TaskManager : MonoBehaviour
             }
             if (tasks[i].GetComponentInChildren<Toggle>().isOn != toggleStati[i])
             {
-                StartCoroutine(ToggleTask(tasks[i]));
+                //StartCoroutine(ToggleTask(tasks[i]));
                 toggleStati[i] = !toggleStati[i];
             }
         }
         if (indexToRemove < 1000)       tasks.RemoveAt(indexToRemove);
+        */
     }
+
+    public void deleteChecked()
+    {
+        if (tasks == null) return;
+        int indexToRemove = 1000;
+
+        for (int i = 0; i < tasks.Count; i++)
+        {
+            if (tasks[i] == null)
+            {
+                indexToRemove = i;
+                continue;
+            }
+            if (tasks[i].GetComponentInChildren<Toggle>().isOn != toggleStati[i])
+            {
+                StartCoroutine(ToggleTask(tasks[i], true));
+                //toggleStati[i] = !toggleStati[i];
+               
+            }
+        }
+        if (indexToRemove < 1000) tasks.RemoveAt(indexToRemove);
+    }
+
+    public void doneChecked()
+    {
+        if (tasks == null) return;
+        int indexToRemove = 1000;
+
+        for (int i = 0; i < tasks.Count; i++)
+        {
+            if (tasks[i] == null)
+            {
+                indexToRemove = i;
+                continue;
+            }
+            if (tasks[i].GetComponentInChildren<Toggle>().isOn != toggleStati[i])
+            {
+                toggleStati[i] = !toggleStati[i];
+                StartCoroutine(ToggleTask(tasks[i], false));
+                
+            }
+        }
+        if (indexToRemove < 1000) tasks.RemoveAt(indexToRemove);
+    }
+
+
 }
