@@ -105,7 +105,15 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             yield return new WaitForEndOfFrame();
         }
         objectToMove.transform.position = endPosition;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
+
+        // TO-DO: Fade and wait a bit
+        if (gameObject.GetComponent<FadeObject_B>() != null)
+        {
+            gameObject.GetComponent<FadeObject_B>().fadeOut = true;
+            yield return new WaitForSeconds(0.5f);
+        }
+
         Destroy(gameObject);
     }
 
@@ -120,15 +128,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             yield return new WaitForEndOfFrame();
         }
         objectToMove.transform.position = endPosition;
-        yield return new WaitForSeconds(0.5f);
         
-        if (objectToMove.GetComponent<Task_B>().isActive)
-        {
-            objectToMove.GetComponent<Task_B>().isActive = false;
-        }
-        else
-        {
-            objectToMove.GetComponent<Task_B>().isActive = true;
-        }
+        objectToMove.GetComponent<Task_B>().isActive = !objectToMove.GetComponent<Task_B>().isActive;
     }
 }

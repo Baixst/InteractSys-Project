@@ -403,7 +403,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
   m_FlipX: 0
@@ -837,7 +837,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
   m_FlipX: 0
@@ -860,6 +860,7 @@ GameObject:
   - component: {fileID: 1810986349740893473}
   - component: {fileID: 1810986349740893484}
   - component: {fileID: 1810986349740893487}
+  - component: {fileID: 4219579293089383352}
   m_Layer: 0
   m_Name: TaskPrefab_B
   m_TagString: Task
@@ -920,6 +921,21 @@ MonoBehaviour:
   isActive: 1
   greenBar: {fileID: 1810986347996742061}
   blueBar: {fileID: 7741383927734681770}
+--- !u!114 &4219579293089383352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810986349740893486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d77129ae000de57458c745f05d51e554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOut: 0
+  fadeIn: 0
+  fadeSpeed: 4
 --- !u!1 &7741383927392788134
 GameObject:
   m_ObjectHideFlags: 0

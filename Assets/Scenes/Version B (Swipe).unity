@@ -1277,7 +1277,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1363913831}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_TargetAssemblyTypeName: UI_Manager_B, Assembly-CSharp
         m_MethodName: GoToActiveList
         m_Mode: 1
         m_Arguments:
@@ -2160,7 +2160,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1363913831}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_TargetAssemblyTypeName: UI_Manager_B, Assembly-CSharp
         m_MethodName: OpenNewTaskPanel
         m_Mode: 1
         m_Arguments:
@@ -2235,7 +2235,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1363913830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2149f13c53988eb438e6f95e877cdae0, type: 3}
+  m_Script: {fileID: 11500000, guid: 27b3034b622cdb746b7a3939333727fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   newTaskPanel: {fileID: 2008250679}
@@ -2245,8 +2245,8 @@ MonoBehaviour:
   doneScrollView: {fileID: 88820061}
   activeListBar: {fileID: 103631709}
   doneListBar: {fileID: 1038913163}
-  selectedColor: {r: 0.627451, g: 0.52156866, b: 0.9607844, a: 1}
-  deselectedColor: {r: 0.76470596, g: 0.76470596, b: 0.76470596, a: 1}
+  selectedColor: {r: 0.627451, g: 0.52156866, b: 0.9607843, a: 1}
+  deselectedColor: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
 --- !u!4 &1363913832
 Transform:
   m_ObjectHideFlags: 0
@@ -2695,7 +2695,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1363913831}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_TargetAssemblyTypeName: UI_Manager_B, Assembly-CSharp
         m_MethodName: GoToDoneList
         m_Mode: 1
         m_Arguments:
@@ -2827,7 +2827,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1363913831}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_TargetAssemblyTypeName: UI_Manager_B, Assembly-CSharp
         m_MethodName: CloseNewTaskPanel
         m_Mode: 1
         m_Arguments:
@@ -3516,7 +3516,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110.490005, y: -176.858}
+  m_AnchoredPosition: {x: 110.490005, y: -181.1}
   m_SizeDelta: {x: 55, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2080386487
@@ -3576,7 +3576,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1363913831}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_TargetAssemblyTypeName: UI_Manager_B, Assembly-CSharp
         m_MethodName: CloseNewTaskPanel
         m_Mode: 1
         m_Arguments:
@@ -3588,7 +3588,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1363913831}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_TargetAssemblyTypeName: UI_Manager_B, Assembly-CSharp
         m_MethodName: GoToActiveList
         m_Mode: 1
         m_Arguments:

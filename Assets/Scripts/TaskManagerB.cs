@@ -37,9 +37,9 @@ public class TaskManagerB : MonoBehaviour
 
     private IEnumerator ToggleTask(GameObject listElement)
     {
-        yield return new WaitForSeconds(0.2f);
-        // listElement.GetComponent<FadeObject>().fadeOut = true;
-        // yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(0.4f);
+        listElement.GetComponent<FadeObject_B>().fadeOut = true;
+        yield return new WaitForSeconds(0.5f);
 
         if (!listElement.GetComponent<Task_B>().isActive)
         {
@@ -53,6 +53,7 @@ public class TaskManagerB : MonoBehaviour
             listElement.GetComponent<Task_B>().greenBar.SetActive(true);
             listElement.GetComponent<Task_B>().blueBar.SetActive(false);
         }
+        listElement.GetComponent<FadeObject_B>().fadeIn = true;
     }
 
     void Update()
