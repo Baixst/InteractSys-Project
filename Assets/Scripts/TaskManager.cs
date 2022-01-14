@@ -34,6 +34,8 @@ public class TaskManager : MonoBehaviour
             newTask.GetComponentInChildren<Text>().text = taskName;
             tasks.Add(newTask);
             toggleStati.Add(newTask.GetComponentInChildren<Toggle>().isOn);
+
+            
         }
     }
 
@@ -42,30 +44,32 @@ public class TaskManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         listElement.GetComponent<FadeObject>().fadeOut = true;
         yield return new WaitForSeconds(0.35f);
-        
 
-        if (listElement.GetComponentInChildren<Toggle>().isOn)
+
+        if (listElement.GetComponentInChildren<Toggle>().isOn && UI.onActivePage)
         {
             listElement.transform.SetParent(doneScrollViewContent, false);
             listElement.GetComponent<FadeObject>().fadeIn = true;
             listElement.GetComponentInChildren<Toggle>().isOn = false;
         }
-        else
+        else if (listElement.GetComponentInChildren<Toggle>().isOn && UI.onActivePage == false)
         {
             listElement.transform.SetParent(activeScrollViewContent, false);
             listElement.GetComponent<FadeObject>().fadeIn = true;
-           
+            listElement.GetComponentInChildren<Toggle>().isOn = false;
+
         }
         
         if (destroy)
         {
             Destroy(listElement);
+            tasks.Remove(tasks[tasks.Count - 1]);
         }
     }
 
     void Update()
     {
-        Debug.Log(checkToggledTasks());
+        checkToggledTasks();
         if (toggledTasks > 0)
         {
             if (UI.onNewTaskPage)
@@ -86,25 +90,8 @@ public class TaskManager : MonoBehaviour
         {
             UI.DeactivateAllButtons();
         }
-        /*
-        if (tasks == null)  return;
-        int indexToRemove = 1000;
-
-        for (int i = 0; i < tasks.Count; i++)
-        {
-            if (tasks[i] == null)
-            {
-                indexToRemove = i;
-                continue;
-            }
-            if (tasks[i].GetComponentInChildren<Toggle>().isOn != toggleStati[i])
-            {
-                //StartCoroutine(ToggleTask(tasks[i]));
-                toggleStati[i] = !toggleStati[i];
-            }
-        }
-        if (indexToRemove < 1000)       tasks.RemoveAt(indexToRemove);
-        */
+        
+        
     }
 
     public void deleteChecked()
@@ -119,11 +106,11 @@ public class TaskManager : MonoBehaviour
                 indexToRemove = i;
                 continue;
             }
-            if (tasks[i].GetComponentInChildren<Toggle>().isOn != toggleStati[i])
+            if (tasks[i].GetComponentInChildren<Toggle>().isOn)
             {
-                StartCoroutine(ToggleTask(tasks[i], true));
                 toggleStati[i] = !toggleStati[i];
-               
+                StartCoroutine(ToggleTask(tasks[i], true));
+
             }
         }
         if (indexToRemove < 1000) tasks.RemoveAt(indexToRemove);
@@ -141,28 +128,34 @@ public class TaskManager : MonoBehaviour
                 indexToRemove = i;
                 continue;
             }
-            if (tasks[i].GetComponentInChildren<Toggle>().isOn != toggleStati[i])
-            {
-                
-                StartCoroutine(ToggleTask(tasks[i], false));
+            if (tasks[i].GetComponentInChildren<Toggle>().isOn)
+              {
                 toggleStati[i] = !toggleStati[i];
-                
-            }
+                StartCoroutine(ToggleTask(tasks[i], false));
+     
+              } 
+          
+         
         }
         if (indexToRemove < 1000) tasks.RemoveAt(indexToRemove);
     }
 
-    public int checkToggledTasks()
+    public void checkToggledTasks()
     {
         toggledTasks = 0;
-        for (int i = 0; i < tasks.Count; i++)
+        if (tasks != null)
         {
-            if (tasks[i].GetComponentInChildren<Toggle>().isOn)
+            
+            for (int i = 0; i < tasks.Count; i++)
             {
-                toggledTasks++;
-            }
+                if (tasks[i].GetComponentInChildren<Toggle>().isOn)
+                {
+                    toggledTasks++;
+                }
 
+            }
         }
-        return toggledTasks;
+        Debug.Log("Tasks: " + toggledTasks)
+;       
     }
 }
