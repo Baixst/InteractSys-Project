@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3594975145910765156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3594975145910765162}
+  - component: {fileID: 3594975145910765157}
+  m_Layer: 0
+  m_Name: UI Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3594975145910765162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3594975145910765156}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.12985957, y: -3.2634983, z: -1.0949574}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3594975145910765157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3594975145910765156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2149f13c53988eb438e6f95e877cdae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newTaskPanel: {fileID: 0}
+  menuButton: {fileID: 0}
+  searchButton: {fileID: 0}
+  activeScrollView: {fileID: 0}
+  doneScrollView: {fileID: 0}
+  DoneAllButton: {fileID: 0}
+  DeleteAllButton: {fileID: 0}
+  ActivateAllButton: {fileID: 0}
+  activeListBar: {fileID: 0}
+  doneListBar: {fileID: 0}
+  selectedColor: {r: 0.627451, g: 0.52156866, b: 0.9607844, a: 1}
+  deselectedColor: {r: 0.76470596, g: 0.76470596, b: 0.76470596, a: 1}
+  onActivePage: 0
+  onNewTaskPage: 0

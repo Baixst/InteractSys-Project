@@ -458,9 +458,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9528f6e1983b8f04aaca6d19750168ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskPrefab: {fileID: 973981980508700315, guid: a90d34b896d047942978e510446ebaa6, type: 3}
+  taskPrefab: {fileID: 2950415259413665324, guid: a90d34b896d047942978e510446ebaa6, type: 3}
   activeScrollViewContent: {fileID: 951503090}
   doneScrollViewContent: {fileID: 751102550}
+  UI: {fileID: 1363913831}
+  toggledTasks: 0
 --- !u!4 &226476120
 Transform:
   m_ObjectHideFlags: 0
@@ -3008,61 +3010,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330147747}
   m_CullTransparentMesh: 1
---- !u!1 &1363913830
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1363913832}
-  - component: {fileID: 1363913831}
-  m_Layer: 0
-  m_Name: UI Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1363913831
+--- !u!114 &1363913831 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3594975145910765157, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+  m_PrefabInstance: {fileID: 3594975147264911874}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363913830}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2149f13c53988eb438e6f95e877cdae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newTaskPanel: {fileID: 2008250679}
-  menuButton: {fileID: 784879572}
-  searchButton: {fileID: 317334454}
-  activeScrollView: {fileID: 974381191}
-  doneScrollView: {fileID: 2088205754}
-  DoneAllButton: {fileID: 897124876}
-  DeleteAllButton: {fileID: 1966405107}
-  ActivateAllButton: {fileID: 426731439}
-  activeListBar: {fileID: 103631709}
-  doneListBar: {fileID: 1038913163}
-  selectedColor: {r: 0.627451, g: 0.52156866, b: 0.9607844, a: 1}
-  deselectedColor: {r: 0.76470596, g: 0.76470596, b: 0.76470596, a: 1}
---- !u!4 &1363913832
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363913830}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12985957, y: -3.2634983, z: -1.0949574}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1376298162
 GameObject:
   m_ObjectHideFlags: 0
@@ -5390,3 +5348,100 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115663747}
   m_CullTransparentMesh: 1
+--- !u!1001 &3594975147264911874
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3594975145910765156, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: m_Name
+      value: UI Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594975145910765157, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: menuButton
+      value: 
+      objectReference: {fileID: 784879572}
+    - target: {fileID: 3594975145910765157, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: doneListBar
+      value: 
+      objectReference: {fileID: 1038913163}
+    - target: {fileID: 3594975145910765157, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: newTaskPanel
+      value: 
+      objectReference: {fileID: 2008250679}
+    - target: {fileID: 3594975145910765157, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: searchButton
+      value: 
+      objectReference: {fileID: 317334454}
+    - target: {fileID: 3594975145910765157, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: DoneAllButton
+      value: 
+      objectReference: {fileID: 897124876}
+    - target: {fileID: 3594975145910765157, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: activeListBar
+      value: 
+      objectReference: {fileID: 103631709}
+    - target: {fileID: 3594975145910765157, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: doneScrollView
+      value: 
+      objectReference: {fileID: 2088205754}
+    - target: {fileID: 3594975145910765157, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: DeleteAllButton
+      value: 
+      objectReference: {fileID: 1966405107}
+    - target: {fileID: 3594975145910765157, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: activeScrollView
+      value: 
+      objectReference: {fileID: 974381191}
+    - target: {fileID: 3594975145910765157, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: ActivateAllButton
+      value: 
+      objectReference: {fileID: 426731439}
+    - target: {fileID: 3594975145910765162, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594975145910765162, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.12985957
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594975145910765162, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.2634983
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594975145910765162, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.0949574
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594975145910765162, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594975145910765162, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594975145910765162, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594975145910765162, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594975145910765162, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594975145910765162, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594975145910765162, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ef2028ef595e16844a9bf9c85d96ae4b, type: 3}

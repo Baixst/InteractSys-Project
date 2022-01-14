@@ -16,12 +16,20 @@ public class UI_Manager : MonoBehaviour
     public SpriteRenderer doneListBar;
     public Color selectedColor;
     public Color deselectedColor;
+    public bool onActivePage;
+    public bool onNewTaskPage;
+ 
 
     void Start()
     {
         newTaskPanel.SetActive(false);
         doneScrollView.SetActive(false);
         ActivateAllButton.SetActive(false);
+        DoneAllButton.SetActive(false);
+        DeleteAllButton.SetActive(false);
+        onActivePage = true;
+        onNewTaskPage = false;
+
     }
 
     public void OpenNewTaskPanel()
@@ -29,9 +37,7 @@ public class UI_Manager : MonoBehaviour
         newTaskPanel.SetActive(true);
         searchButton.SetActive(false);
         menuButton.SetActive(false);
-        DoneAllButton.SetActive(false);
-        DeleteAllButton.SetActive(false);
-        ActivateAllButton.SetActive(false);
+        onNewTaskPage = true;
     }
 
     public void CloseNewTaskPanel()
@@ -39,9 +45,7 @@ public class UI_Manager : MonoBehaviour
         newTaskPanel.SetActive(false);
         searchButton.SetActive(true);
         menuButton.SetActive(true);
-        DoneAllButton.SetActive(true);
-        DeleteAllButton.SetActive(true);
-        ActivateAllButton.SetActive(false);
+        onNewTaskPage = false;
     }
 
     public void GoToActiveList()
@@ -50,8 +54,7 @@ public class UI_Manager : MonoBehaviour
         doneListBar.color = deselectedColor;
         activeScrollView.SetActive(true);
         doneScrollView.SetActive(false);
-        DoneAllButton.SetActive(true);
-        ActivateAllButton.SetActive(false);
+        onActivePage = true;
 
     }
 
@@ -61,8 +64,26 @@ public class UI_Manager : MonoBehaviour
         doneListBar.color = selectedColor;
         activeScrollView.SetActive(false);
         doneScrollView.SetActive(true);
-        DoneAllButton.SetActive(false);
-        ActivateAllButton.SetActive(true);
+        onActivePage = false;
+    }
 
+    public void ActivateActiveButtons()
+    {
+        ActivateAllButton.SetActive(false);
+        DoneAllButton.SetActive(true);
+        DeleteAllButton.SetActive(true);
+    }
+    public void ActivateDoneButtons()
+    {
+        ActivateAllButton.SetActive(true);
+        DoneAllButton.SetActive(false);
+        DeleteAllButton.SetActive(true);
+    }
+
+    public void DeactivateAllButtons()
+    {
+        ActivateAllButton.SetActive(false);
+        DoneAllButton.SetActive(false);
+        DeleteAllButton.SetActive(false);
     }
 }

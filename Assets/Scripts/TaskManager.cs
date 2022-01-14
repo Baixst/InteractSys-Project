@@ -11,7 +11,13 @@ public class TaskManager : MonoBehaviour
     public Transform activeScrollViewContent;
     public Transform doneScrollViewContent;
     private string taskName;
+    public UI_Manager UI;
+    public int toggledTasks;
 
+    private void Start()
+    {
+        toggledTasks = 0;
+    }
     public void UpdateTaskName(string str)
     {
         taskName = str;
@@ -36,21 +42,21 @@ public class TaskManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         listElement.GetComponent<FadeObject>().fadeOut = true;
         yield return new WaitForSeconds(0.35f);
-
         
 
         if (listElement.GetComponentInChildren<Toggle>().isOn)
         {
             listElement.transform.SetParent(doneScrollViewContent, false);
             listElement.GetComponent<FadeObject>().fadeIn = true;
-           // listElement.GetComponentInChildren<Toggle>().isOn = false;
+            listElement.GetComponentInChildren<Toggle>().isOn = false;
         }
         else
         {
             listElement.transform.SetParent(activeScrollViewContent, false);
             listElement.GetComponent<FadeObject>().fadeIn = true;
+           
         }
-
+        
         if (destroy)
         {
             Destroy(listElement);
@@ -59,6 +65,27 @@ public class TaskManager : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(checkToggledTasks());
+        if (toggledTasks > 0)
+        {
+            if (UI.onNewTaskPage)
+            {
+                UI.DeactivateAllButtons();
+            }
+            else if (UI.onNewTaskPage == false && UI.onActivePage)
+            {
+                UI.ActivateActiveButtons();
+            }
+            else
+            {
+                UI.ActivateDoneButtons();
+            }
+
+        }
+        else
+        {
+            UI.DeactivateAllButtons();
+        }
         /*
         if (tasks == null)  return;
         int indexToRemove = 1000;
@@ -95,7 +122,7 @@ public class TaskManager : MonoBehaviour
             if (tasks[i].GetComponentInChildren<Toggle>().isOn != toggleStati[i])
             {
                 StartCoroutine(ToggleTask(tasks[i], true));
-                //toggleStati[i] = !toggleStati[i];
+                toggleStati[i] = !toggleStati[i];
                
             }
         }
@@ -116,13 +143,26 @@ public class TaskManager : MonoBehaviour
             }
             if (tasks[i].GetComponentInChildren<Toggle>().isOn != toggleStati[i])
             {
-                toggleStati[i] = !toggleStati[i];
+                
                 StartCoroutine(ToggleTask(tasks[i], false));
+                toggleStati[i] = !toggleStati[i];
                 
             }
         }
         if (indexToRemove < 1000) tasks.RemoveAt(indexToRemove);
     }
 
+    public int checkToggledTasks()
+    {
+        toggledTasks = 0;
+        for (int i = 0; i < tasks.Count; i++)
+        {
+            if (tasks[i].GetComponentInChildren<Toggle>().isOn)
+            {
+                toggledTasks++;
+            }
 
+        }
+        return toggledTasks;
+    }
 }
