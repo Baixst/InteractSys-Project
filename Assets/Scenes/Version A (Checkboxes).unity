@@ -459,9 +459,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   taskPrefab: {fileID: 2950415259413665324, guid: a90d34b896d047942978e510446ebaa6, type: 3}
+  tasks: []
   activeScrollViewContent: {fileID: 951503090}
   doneScrollViewContent: {fileID: 751102550}
   UI: {fileID: 1363913831}
+  tracker: {fileID: 1761544939}
   toggledTasks: 0
 --- !u!4 &226476120
 Transform:
@@ -1375,7 +1377,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &523945839
 GameObject:
@@ -2627,7 +2629,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1149406714
 GameObject:
@@ -3192,7 +3194,7 @@ Transform:
   m_LocalScale: {x: 6.0746646, y: 1.3703814, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1432696704
 GameObject:
@@ -3582,6 +3584,8 @@ MonoBehaviour:
   timeTracker: 0
   textBox: {fileID: 588690667}
   results: []
+  trackTime: 0
+  tasksDone: 0
 --- !u!4 &1761544940
 Transform:
   m_ObjectHideFlags: 0
@@ -3594,7 +3598,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1771804056
 GameObject:
@@ -3676,7 +3680,7 @@ Transform:
   m_LocalScale: {x: 6, y: 0.8000001, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1786885588
 GameObject:
@@ -4619,7 +4623,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2008250679
 GameObject:
@@ -5123,7 +5127,7 @@ RectTransform:
   - {fileID: 426731440}
   - {fileID: 588690669}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

@@ -8,19 +8,20 @@ public class ResultTracker : MonoBehaviour
     public float timeTracker;
     public Text textBox;        // just for testing
     public List<float> results;
-    private int currentTaskIndex = 0;
-    private bool trackTime = false;
-    bool trackedTasksDone = false;
-    bool trackedTasksActivated = false;
-    bool trackedTasksDeleted = false;
+    private int currentTaskIndex;
+    public bool trackTime = false;
+    public int tasksDone = 0;
 
     void Start()
     {
         textBox.text = timeTracker.ToString("F2");
+        currentTaskIndex = 0;
     }
 
     void Update()
     {
+        
+        
         if (trackTime)
         {
             timeTracker += Time.deltaTime;
@@ -30,14 +31,32 @@ public class ResultTracker : MonoBehaviour
 
     public void StopTime()
     {
-        trackTime = false;
-        results[currentTaskIndex] = timeTracker;
-        currentTaskIndex++;
+        if (trackTime == true)
+        {        
+            tasksDone = tasksDone + 1;
+            currentTaskIndex++;
+            results.Add(timeTracker);
+            trackTime = false;
+
+        }
     }
 
     public void TrackNextTime()
     {
-        timeTracker = 0;
-        trackTime = true;
+        if (trackTime == false)
+        {
+            timeTracker = 0;
+            trackTime = true;
+           
+        }
+
+    }
+
+    public void ShowResults()
+    {
+        for (int i = 0; i < results.Count; i++)
+        {
+            Debug.Log("Result " + (i + 1) + ": " + results[i] + " sek.");
+        }
     }
 }
