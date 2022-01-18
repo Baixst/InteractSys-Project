@@ -14,6 +14,7 @@ public class TaskManager : MonoBehaviour
     public UI_Manager UI;
     public ResultTracker tracker;
     public int toggledTasks;
+    public InstructionManager instructionManager;
 
     bool TaskRunning = false;
 
@@ -80,6 +81,7 @@ public class TaskManager : MonoBehaviour
             || (tasks.Count == 6 && tracker.tasksDone == 5))
         {
             tracker.StopTime();     //erste, dritte, vierte, fünfte Task Ende
+            instructionManager.ShowNextInstruction();
             //tracker.ShowResults();
         }
 
@@ -91,18 +93,7 @@ public class TaskManager : MonoBehaviour
         checkToggledTasks();
         if (toggledTasks > 0)
         {
-            if (TaskRunning == false && UI.onActivePage && (tracker.tasksDone == 1 || tracker.tasksDone == 3 || tracker.tasksDone == 6))
-            {
-                TaskRunning = true;       //starte zweite, vierte, siebte  Task
-                tracker.TrackNextTime();
-            }
-
-            if (TaskRunning == false && UI.onActivePage == false && (tracker.tasksDone == 7 || tracker.tasksDone == 9) )
-            {
-                TaskRunning = true;       //starte achte  Task
-                tracker.TrackNextTime();
-            }
-
+            
             if (UI.onNewTaskPage)
             {
                 UI.DeactivateAllButtons();
@@ -146,7 +137,7 @@ public class TaskManager : MonoBehaviour
         }
         if (indexToRemove < 1000) tasks.RemoveAt(indexToRemove);
        
-        if (tracker.tasksDone == 9 && TaskRunning == true)
+        if (tracker.tasksDone == 8 )
         { 
                 TaskRunning = false;
                 tracker.StopTime();
@@ -181,14 +172,15 @@ public class TaskManager : MonoBehaviour
 
         if (tracker.tasksDone == 1 || tracker.tasksDone == 3 || tracker.tasksDone == 6 || tracker.tasksDone == 7)
         {
-            if (TaskRunning == true)
-            {
+          //  if (TaskRunning == true)
+          //  {
                
                 tracker.StopTime();
-                TaskRunning = false;
+        //        TaskRunning = false;
+                instructionManager.ShowNextInstruction();
                 //zweite, vierte, siebte, achte Task beenden
 
-            }
+       //     }
 
         }
     }
