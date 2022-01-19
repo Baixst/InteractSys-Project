@@ -13,16 +13,20 @@ public class TaskManagerB : MonoBehaviour
     private string taskName;
     public Color32 setToDoneColor;
     public Color32 setToActiveColor;
+    public ResultTracker tracker;
+    public InstructionManager instructionManager;
+
+    bool TaskRunning = false;
+    private int tasksToggeled = 0;
+    private int tasksDeleted = 0;
 
     public void UpdateTaskName(string str)
     {
-        Debug.Log("update task Name");
         taskName = str;
     }
 
     public void CreateNewTask()
     {
-        Debug.Log("creating new task");
         if (taskName == null)   return;
 
         if (taskName.Length > 0)
@@ -58,6 +62,18 @@ public class TaskManagerB : MonoBehaviour
 
     void Update()
     {
+        if ((tasks.Count == 1 && tracker.tasksDone == 0) || (tasks.Count == 2 && tracker.tasksDone == 2) || (tasks.Count == 5 && tracker.tasksDone == 4)
+            || (tasks.Count == 6 && tracker.tasksDone == 5))
+        {
+            tracker.StopTime();     //erste, dritte, vierte, fuenfte Task Ende
+            instructionManager.ShowNextInstruction();
+        }
+
+        if (tracker.tasksDone== 8 && TaskRunning == false)
+        {
+            tracker.tasksDone = 9;
+        }
+
         if (tasks == null)  return;
         int indexToRemove = 1000;
 
@@ -75,5 +91,41 @@ public class TaskManagerB : MonoBehaviour
             }
         }
         if (indexToRemove < 1000)       tasks.RemoveAt(indexToRemove);
+    }
+
+    public void CheckOnDelete()
+    {
+        if (tracker.tasksDone == 9)
+        {
+            tasksDeleted++;
+
+            if (tasksDeleted == 5)
+            {
+                TaskRunning = false;
+                tracker.StopTime();
+                tracker.ShowResults();
+            }
+        }
+    }
+
+    public void CheckOnToggle()
+    {
+        if (tracker.tasksDone == 1 || tracker.tasksDone == 3 || tracker.tasksDone == 7)
+        {
+            tracker.StopTime();
+            instructionManager.ShowNextInstruction();
+            return;
+        }
+
+        if (tracker.tasksDone == 6)
+        {
+            tasksToggeled++;
+        }
+
+        if (tasksToggeled == 4)
+        {
+            tracker.StopTime();
+            instructionManager.ShowNextInstruction();
+        }
     }
 }

@@ -5,32 +5,46 @@ using UnityEngine;
 public class UI_Manager_B : MonoBehaviour
 {
     public GameObject newTaskPanel;
+    public GameObject editTaskPanel;
     public GameObject menuButton;
-    public GameObject searchButton;
     public GameObject activeScrollView;
     public GameObject doneScrollView;
     public SpriteRenderer activeListBar;
     public SpriteRenderer doneListBar;
     public Color selectedColor;
     public Color deselectedColor;
+    public GameObject burgerMenuPanel;
+    private bool burgerMenuOpen = false;
 
     void Start()
     {
         newTaskPanel.SetActive(false);
         doneScrollView.SetActive(false);
+        burgerMenuPanel.SetActive(false);
+        editTaskPanel.SetActive(false);
     }
 
     public void OpenNewTaskPanel()
     {
         newTaskPanel.SetActive(true);
-        searchButton.SetActive(false);
         menuButton.SetActive(false);
     }
 
     public void CloseNewTaskPanel()
     {
         newTaskPanel.SetActive(false);
-        searchButton.SetActive(true);
+        menuButton.SetActive(true);
+    }
+
+    public void OpenEditTaskPanel()
+    {
+        editTaskPanel.SetActive(true);
+        menuButton.SetActive(false);
+    }
+
+    public void CloseEditTaskPanel()
+    {
+        editTaskPanel.SetActive(false);
         menuButton.SetActive(true);
     }
 
@@ -48,5 +62,29 @@ public class UI_Manager_B : MonoBehaviour
         doneListBar.color = selectedColor;
         activeScrollView.SetActive(false);
         doneScrollView.SetActive(true);
+    }
+    
+    public void ToggleBurgerMenu()
+    {
+        if (burgerMenuOpen)
+        {
+            CloseBurgerMenu();
+        }
+        else
+        {
+            OpenBurgerMenu();
+        }
+    }
+
+    public void OpenBurgerMenu()
+    {
+        burgerMenuPanel.SetActive(true);
+        burgerMenuOpen = true;
+    }
+
+    public void CloseBurgerMenu()
+    {
+        burgerMenuPanel.SetActive(false);
+        burgerMenuOpen = false;
     }
 }

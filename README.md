@@ -10,13 +10,13 @@ File -> Build -> Connect phone per USB cable -> bring apk onto phone -> click on
 
 2.)	Etwas später hast du den Müll rausgebracht. Setzte die Aufgabe auf erledigt. (Erstes mal eine Aufgabe erledigen)
 
-3.)	Dein Partner sagt, dass du staubsaugen sollt. Lege dir eine entsprechende Aufgabe an.
+3.)	Dein Partner bittet dich zu staubsaugen. Lege dir eine entsprechende Aufgabe an.
 
-4.)	Du bist sehr fleißig, setzte die Staubsaugen-Aufgabe auf erledigt. (zweites mal Aufgabe erledigen)
+4.)	Du bist sehr fleißig. Setzte die Staubsaugen-Aufgabe auf erledigt. (zweites mal Aufgabe erledigen)
 
 5.)	Am Nachmittag möchtest du einkaufen gehen. Lege dir eine Einkaufsliste mit drei Aufgaben an. Du brauchst Eier, Milch und Brot.
 
-6.)	Fast vergessen, du brauchst ja auch noch Butter. Füge eine Aufgabe für Butter auf deiner Liste hinzu.
+6.)	Fast vergessen, du brauchst ja auch noch Butter. Füge eine Aufgabe für Butter einkaufen auf deiner Liste hinzu.
 
 7.)	Du warst einkaufen, erledige alle Aufgaben deiner Einkaufsliste. (Mehrer Aufgaben erledigen)
 

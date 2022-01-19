@@ -31,7 +31,6 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             {
                 mousePositionStart = globalMousePosition;
                 recordMousePositionStart = false;
-                Debug.Log("mouse position start:" + globalMousePosition);
             }
 
             // object gets basicly parented to mouse, which makes it jump
@@ -64,7 +63,6 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         if (!allowDragEnd)  return;
 
         // Delete Object or move it back
-        Debug.Log("x position on drag end: " + draggingObjectRectTransform.position.x);
         if (draggingObjectRectTransform.position.x < -2.18f)
         {
             StartCoroutine(MoveOverSecondsAndDelete(gameObject, new Vector3 (-5.65f, startY, startZ), 0.25f));
@@ -105,9 +103,10 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             yield return new WaitForEndOfFrame();
         }
         objectToMove.transform.position = endPosition;
-        yield return new WaitForSeconds(0.5f);
+        
+        taskManager.CheckOnDelete();
 
-        // TO-DO: Fade and wait a bit
+        yield return new WaitForSeconds(0.5f);
         if (gameObject.GetComponent<FadeObject_B>() != null)
         {
             gameObject.GetComponent<FadeObject_B>().fadeOut = true;
@@ -128,6 +127,8 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             yield return new WaitForEndOfFrame();
         }
         objectToMove.transform.position = endPosition;
+
+        taskManager.CheckOnToggle();
         
         objectToMove.GetComponent<Task_B>().isActive = !objectToMove.GetComponent<Task_B>().isActive;
     }

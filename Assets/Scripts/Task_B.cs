@@ -9,10 +9,12 @@ public class Task_B : MonoBehaviour
     public bool isActive;
     public GameObject greenBar;
     public GameObject blueBar;
+    private UI_Manager_B ui;
 
     void Awake()
     {
         isActive = true;
+        ui = FindObjectOfType<UI_Manager_B>();
     }
 
     public void SetNameTo(string str)
@@ -23,5 +25,10 @@ public class Task_B : MonoBehaviour
     public string GetTaskName()
     {
         return taskName.text;
+    }
+
+    public void EditTask()
+    {
+        ui.OpenEditTaskPanel();
     }
 }

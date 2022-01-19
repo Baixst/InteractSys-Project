@@ -7,15 +7,18 @@ public class InstructionManager : MonoBehaviour
 {
     public GameObject InstructionPanel;
     public TextMeshProUGUI instructionText;
+
+    [TextArea(2, 3)]
     public List<string> instructions; 
     private Animator animator;
-    private int currentInstruction = 0;
+    public int currentInstruction = 0;
 
     void Start()
     {
         animator = InstructionPanel.GetComponent<Animator>();
         CloseInstructionPanel();
         StartCoroutine(ShowFirstInstruction());
+        SetInstructionTextTo(instructions[0]);
     }
 
     IEnumerator ShowFirstInstruction()
@@ -25,13 +28,18 @@ public class InstructionManager : MonoBehaviour
         animator.SetTrigger("ShowFirstInstruction");
     }
 
+    private IEnumerator ShowInstruction(int index)
+    {
+        yield return new WaitForSeconds(1f);
+        SetInstructionTextTo(instructions[index]);
+        InstructionPanel.SetActive(true);
+        animator.SetTrigger("ShowNextInstruction");
+    }
 
     public void ShowNextInstruction()
     {
         currentInstruction++;
-        SetInstructionTextTo(instructions[currentInstruction]);
-        InstructionPanel.SetActive(true);
-        animator.SetTrigger("ShowNextInstruction");
+        StartCoroutine(ShowInstruction(currentInstruction));
     }
 
     public void SetInstructionTextTo(string text)

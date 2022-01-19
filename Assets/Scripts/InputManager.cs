@@ -37,7 +37,6 @@ public class InputManager : MonoBehaviour
     private void StartTouch(InputAction.CallbackContext context)
     {
         touchStartedPosition = touchControls.DefaultControls.TouchPosition.ReadValue<Vector2>();
-        Debug.Log("Touch started " + touchStartedPosition);
         if (OnStartTouch != null)
         {
             OnStartTouch(touchControls.DefaultControls.TouchPosition.ReadValue<Vector2>());
@@ -47,7 +46,6 @@ public class InputManager : MonoBehaviour
     private void EndTouch(InputAction.CallbackContext context)
     {
         touchEndedPosition = touchControls.DefaultControls.TouchPosition.ReadValue<Vector2>();
-        Debug.Log("Touch ended " + touchEndedPosition);
         if (OnEndTouch != null)
         {
             OnEndTouch(touchControls.DefaultControls.TouchPosition.ReadValue<Vector2>());

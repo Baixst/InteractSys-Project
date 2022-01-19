@@ -5,8 +5,8 @@ using UnityEngine;
 public class UI_Manager : MonoBehaviour
 {
     public GameObject newTaskPanel;
+    public GameObject editTaskPanel;
     public GameObject menuButton;
-    public GameObject searchButton;
     public GameObject activeScrollView;
     public GameObject doneScrollView;
     public GameObject DoneAllButton;
@@ -18,7 +18,9 @@ public class UI_Manager : MonoBehaviour
     public Color deselectedColor;
     public bool onActivePage;
     public bool onNewTaskPage;
- 
+    public TaskManager taskManager;
+    public GameObject burgerMenuPanel;
+    private bool burgerMenuOpen = false;
 
     void Start()
     {
@@ -29,13 +31,13 @@ public class UI_Manager : MonoBehaviour
         DeleteAllButton.SetActive(false);
         onActivePage = true;
         onNewTaskPage = false;
-
+        burgerMenuPanel.SetActive(false);
+        editTaskPanel.SetActive(false);
     }
 
     public void OpenNewTaskPanel()
     {
         newTaskPanel.SetActive(true);
-        searchButton.SetActive(false);
         menuButton.SetActive(false);
         onNewTaskPage = true;
     }
@@ -43,9 +45,20 @@ public class UI_Manager : MonoBehaviour
     public void CloseNewTaskPanel()
     {
         newTaskPanel.SetActive(false);
-        searchButton.SetActive(true);
         menuButton.SetActive(true);
         onNewTaskPage = false;
+    }
+
+    public void OpenEditTaskPanel()
+    {
+        editTaskPanel.SetActive(true);
+        menuButton.SetActive(false);
+    }
+
+    public void CloseEditTaskPanel()
+    {
+        editTaskPanel.SetActive(false);
+        menuButton.SetActive(true);
     }
 
     public void GoToActiveList()
@@ -55,7 +68,7 @@ public class UI_Manager : MonoBehaviour
         activeScrollView.SetActive(true);
         doneScrollView.SetActive(false);
         onActivePage = true;
-
+        taskManager.allowTask_8_completion = false;
     }
 
     public void GoToDoneList()
@@ -65,6 +78,7 @@ public class UI_Manager : MonoBehaviour
         activeScrollView.SetActive(false);
         doneScrollView.SetActive(true);
         onActivePage = false;
+        taskManager.allowTask_8_completion = true;
     }
 
     public void ActivateActiveButtons()
@@ -85,5 +99,29 @@ public class UI_Manager : MonoBehaviour
         ActivateAllButton.SetActive(false);
         DoneAllButton.SetActive(false);
         DeleteAllButton.SetActive(false);
+    }
+
+    public void ToggleBurgerMenu()
+    {
+        if (burgerMenuOpen)
+        {
+            CloseBurgerMenu();
+        }
+        else
+        {
+            OpenBurgerMenu();
+        }
+    }
+
+    public void OpenBurgerMenu()
+    {
+        burgerMenuPanel.SetActive(true);
+        burgerMenuOpen = true;
+    }
+
+    public void CloseBurgerMenu()
+    {
+        burgerMenuPanel.SetActive(false);
+        burgerMenuOpen = false;
     }
 }

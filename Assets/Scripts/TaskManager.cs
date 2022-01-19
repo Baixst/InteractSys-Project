@@ -16,12 +16,13 @@ public class TaskManager : MonoBehaviour
     public int toggledTasks;
     public InstructionManager instructionManager;
 
-    bool TaskRunning = false;
+    public bool allowTask_8_completion = false;
 
     private void Start()
     {
         toggledTasks = 0;
     }
+    
     public void UpdateTaskName(string str)
     {
         taskName = str;
@@ -38,8 +39,6 @@ public class TaskManager : MonoBehaviour
             newTask.GetComponentInChildren<Text>().text = taskName;
             tasks.Add(newTask);
             toggleStati.Add(newTask.GetComponentInChildren<Toggle>().isOn);
-
-
         }
     }
 
@@ -48,7 +47,6 @@ public class TaskManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         listElement.GetComponent<FadeObject>().fadeOut = true;
         yield return new WaitForSeconds(0.35f);
-
 
         if (listElement.GetComponentInChildren<Toggle>().isOn && UI.onActivePage)
         {
@@ -61,17 +59,11 @@ public class TaskManager : MonoBehaviour
             listElement.transform.SetParent(activeScrollViewContent, false);
             listElement.GetComponent<FadeObject>().fadeIn = true;
             listElement.GetComponentInChildren<Toggle>().isOn = false;
-
         }
 
         if (destroy)
         {
-
-            //tasks.RemoveAt(listPosition);
-            //Destroy(listElement);
             ArrangeTasks(listPosition);
-            
-           
         }
     }
 
@@ -80,20 +72,13 @@ public class TaskManager : MonoBehaviour
         if ((tasks.Count == 1 && tracker.tasksDone == 0) || (tasks.Count == 2 && tracker.tasksDone == 2) || (tasks.Count == 5 && tracker.tasksDone == 4)
             || (tasks.Count == 6 && tracker.tasksDone == 5))
         {
-            tracker.StopTime();     //erste, dritte, vierte, fünfte Task Ende
+            tracker.StopTime();     //erste, dritte, vierte, fuenfte Task Ende
             instructionManager.ShowNextInstruction();
-            //tracker.ShowResults();
-        }
-
-        if (tracker.tasksDone==8 && TaskRunning==false && UI.onActivePage)
-        {
-            tracker.tasksDone = 9;
         }
 
         checkToggledTasks();
         if (toggledTasks > 0)
         {
-            
             if (UI.onNewTaskPage)
             {
                 UI.DeactivateAllButtons();
@@ -106,14 +91,11 @@ public class TaskManager : MonoBehaviour
             {
                 UI.ActivateDoneButtons();
             }
-
         }
         else
         {
             UI.DeactivateAllButtons();
         }
-
-
     }
 
     public void deleteChecked()
@@ -139,16 +121,13 @@ public class TaskManager : MonoBehaviour
        
         if (tracker.tasksDone == 8 )
         { 
-                TaskRunning = false;
-                tracker.StopTime();
-                //neunte(zehnte) Task beenden
-                tracker.ShowResults();
+            tracker.StopTime();
+            tracker.ShowResults();
         }
     }
 
     public void doneChecked()
     {
-
         if (tasks == null) return;
         int indexToRemove = 1000;
 
@@ -163,25 +142,16 @@ public class TaskManager : MonoBehaviour
             {
                 toggleStati[i] = !toggleStati[i];
                 StartCoroutine(ToggleTask(tasks[i], i, false));
-
             }
-
-
         }
+
         if (indexToRemove < 1000) tasks.RemoveAt(indexToRemove);
 
-        if (tracker.tasksDone == 1 || tracker.tasksDone == 3 || tracker.tasksDone == 6 || tracker.tasksDone == 7)
+        if (tracker.tasksDone == 1 || tracker.tasksDone == 3 || tracker.tasksDone == 6 || (tracker.tasksDone == 7 && allowTask_8_completion)) 
         {
-          //  if (TaskRunning == true)
-          //  {
-               
-                tracker.StopTime();
-        //        TaskRunning = false;
-                instructionManager.ShowNextInstruction();
-                //zweite, vierte, siebte, achte Task beenden
-
-       //     }
-
+            Debug.Log("doneChecked called with tasksDone = " + tracker.tasksDone);
+            tracker.StopTime();
+            instructionManager.ShowNextInstruction();
         }
     }
 
@@ -190,37 +160,28 @@ public class TaskManager : MonoBehaviour
         toggledTasks = 0;
         if (tasks != null)
         {
-
             for (int i = 0; i < tasks.Count; i++)
             {
                 if ( tasks[i] != null && tasks[i].GetComponentInChildren<Toggle>().isOn)
                 {
                     toggledTasks++;
                 }
-
             }
         }
-        //Debug.Log("Tasks: " + toggledTasks)
-
     }
 
     void ArrangeTasks(int listPosition)
     {
-       
-
         if (tasks != null)
         {
-
             for (int i = 0; i < tasks.Count; i++)
             {
                 if (i == listPosition)
                 {
                     Destroy(tasks[i]);
                     tasks.RemoveAt(i);
-
                 }
             }
-
         }
     }
 }
